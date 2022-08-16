@@ -1,0 +1,5 @@
+FROM python
+RUN pip install flask
+COPY ping /app/
+# CMD ["python","run.py"]
+ 
