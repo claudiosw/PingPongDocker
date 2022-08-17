@@ -1,5 +1,0 @@
-FROM python
-RUN pip install flask
-COPY pong /app/
-# CMD ["python","run.py"]
- 

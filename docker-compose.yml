@@ -1,5 +1,19 @@
 version: "3"
 services:
+  pong_container:
+    restart: always
+    build:
+      context: ./
+      dockerfile: pong/Dockerfile
+    container_name: pong
+    environment:
+      - APP_ENV="prod"
+      - APP_DEBUG="True"
+      - APP_PORT=5000
+    networks:
+      - ping-pong-netw
+    volumes:
+      - app_pong_volume:/app
   ping_container:
     container_name: ping
     restart: always
@@ -10,28 +24,14 @@ services:
     networks:
       - ping-pong-netw
     environment:
-      APP_ENV: "prod"
-      APP_DEBUG: "False"
-      APP_PORT: 8080
+      - APP_ENV="prod"
+      - APP_DEBUG="True"
+      - APP_PORT=8080
     depends_on:
       - pong_container
     build:
-      context: ping
-      dockerfile: Dockerfile
-  pong_container:
-    restart: always
-    container_name: pong
-    environment:
-      APP_ENV: "prod"
-      APP_DEBUG: "False"
-      APP_PORT: 5000
-    networks:
-      - ping-pong-netw
-    volumes:
-      - app_pong_volume:/app
-    build:
       context: ./
-      dockerfile: pong/Dockerfile
+      dockerfile: ping/Dockerfile
       
 
 networks:
