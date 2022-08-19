@@ -15,8 +15,6 @@ class PingController(ControllerInterface):
         return HttpResponse(
             status_code=200,
             body={
-                "data": {
-                    "type": response["data"],
-                }
+                "data": response[2]['data']
             }
         )
