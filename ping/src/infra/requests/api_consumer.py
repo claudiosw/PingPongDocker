@@ -14,8 +14,9 @@ class ApiConsumer(ApiConsumerInterface):
         #Preparando a requisição
         req = requests.Request(
             method='GET',
-            url='http://pong_container:5000/v1/pong/',
+            url='http://localhost:5000/v1/pong/',
         )
+        # url='http://pong_container:5000/v1/pong/',
         req_prepared = req.prepare()
 
         #Enviando a requisição

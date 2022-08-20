@@ -1,10 +1,11 @@
 
 from requests import Request
 from src.data.interfaces.api_consumer import ApiConsumerInterface
+from src.domain.use_cases.ping import Ping as PingInterface
 from typing import Dict, Tuple, Type
 
 
-class Ping():
+class Ping(PingInterface):
     def __init__(self, api_consumer: ApiConsumerInterface) -> None:
         self.__api_consumer = api_consumer
 
